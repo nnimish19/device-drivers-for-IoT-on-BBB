@@ -15,6 +15,15 @@ extern	void	arp_hton(struct arppacket *);
 /* in file ascdate.c */
 extern	status	ascdate(uint32, char *);
 
+/* gpio_v2.c*/
+extern void GPIOModuleReset(unsigned int baseAdd);
+extern void GPIOModuleEnable(unsigned int baseAdd);
+extern void GPIOModuleDisable(unsigned int baseAdd);
+extern void GPIODirModeSet(unsigned int baseAdd, unsigned int pinNumber, unsigned int pinDirection);
+extern unsigned int GPIOPinRead(unsigned int baseAdd, unsigned int pinNumber);
+extern void GPIO1Pin23PinMuxSetup(void);
+void GPIO1ModuleClkConfig(void);
+
 /* in file notification.c */
 extern void note_insert(topic16, void *, uint32);
 extern void note_delete();
