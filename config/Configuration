@@ -102,6 +102,14 @@ spi:
 		-r ionull	-g ionull	-p ionull
 		-w ionull	-s ionull	-n spicontrol
 		-intr ionull
+
+act:
+    on gpio_v2
+    	-i actinit      -o ionull       -c ionull
+    	-r ionull      -g ionull      -p ionull
+   		-w actwrite     -s ioerr        -n ioerr
+   		-intr ioerr
+
 %%
 
 /* Actual device declarations that each give the name of a device that	*/
@@ -140,7 +148,8 @@ spi:
    RFILE6 is rfl on rfs
    RFILE7 is rfl on rfs
    RFILE8 is rfl on rfs
-   RFILE9 is rfl on rfs
+   /*RFILE9 is rfl on rfs*/
+   LED is act on gpio_v2 csr 0x4804C000
   
    /* Define the local file system master device (one per system) */
 
