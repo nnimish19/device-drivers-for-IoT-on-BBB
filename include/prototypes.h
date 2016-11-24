@@ -30,6 +30,11 @@ extern	devcall	actinit(struct dentry *);
 /* in file actwrite.c */
 extern	devcall	actwrite(struct dentry *, char *, int32);
 
+/* in folder device/adc */
+extern	void adchandler(uint32 xnum);
+extern devcall	adcinit (struct	dentry *devptr);
+extern devcall	adcread(struct dentry* devptr,char* buff, int32 count);
+
 /* in file notification.c */
 extern void note_insert(topic16, void *, uint32);
 extern void note_delete();

@@ -110,6 +110,13 @@ act:
    		-w actwrite     -s ioerr        -n ioerr
    		-intr ioerr
 
+adc:
+	on top
+		-i adcinit	-o ionull	-c ionull
+		-r adcread	-g ionull	-p ionull
+		-w ionull	-s ionull	-n ionull
+		-intr adchandler
+
 %%
 
 /* Actual device declarations that each give the name of a device that	*/
@@ -168,6 +175,7 @@ act:
 
    SPI0 is spi on top csr 0x48030000
    SPI1 is spi on top csr 0x481A0000
+   ADC  is adc on top csr 0x44e0d000 -irq 16
 
 %%
 
