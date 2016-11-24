@@ -1,0 +1,266 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:complexType name="DDL">
+		<xsd:sequence>
+			<xsd:element name="Sensor" type="Sensor" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Actuator" type="Actuator" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Device" type="Device" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+		<xsd:attribute name="version" type="xsd:string" />
+	</xsd:complexType>
+	<xsd:complexType name="Sensor">
+		<xsd:sequence>
+			<xsd:element name="Description" type="Description" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="Interface" type="Interface" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Actuator">
+		<xsd:sequence>
+			<xsd:element name="Description" type="Description" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="Interface" type="Interface" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Device">
+		<xsd:sequence>
+			<xsd:element name="Description" type="Description" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="Interface" type="Interface" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Description">
+		<xsd:sequence>
+			<xsd:element name="Name" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string" />
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Device_Type" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="Physical" />
+						<xsd:enumeration value="Virtual" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Verbose_Description" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string" />
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Vendor" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string" />
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Version" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string" />
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Physical" type="Physical" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="UniqueId" type="UniqueId" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Location" type="Location" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Physical">
+		<xsd:sequence>
+			<xsd:element name="Dimensions" type="Dimensions" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Operating_environment" type="Operating_environment"
+					minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Dimensions">
+		<xsd:sequence>
+			<xsd:element name="Length" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:float" />
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Width" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:float" />
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Height" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:float" />
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Operating_environment">
+		<xsd:sequence>
+			<xsd:element name="Temperature" type="Temperature" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Humidity" type="Humidity" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Temperature">
+		<xsd:sequence>
+			<xsd:element name="Range" type="Range" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Humidity">
+		<xsd:sequence>
+			<xsd:element name="Range" type="Range" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Range">
+		<xsd:sequence>
+			<xsd:element name="Max" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:float" />
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Min" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:float" />
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="UniqueId">
+		<xsd:sequence>
+			<!-- Encoding scheme to be decided -->
+		</xsd:sequence>
+		<xsd:attribute name="type" type="xsd:string" />
+	</xsd:complexType>
+	<xsd:complexType name="Location">
+		<xsd:sequence>
+			<!-- Encoding scheme to be decided -->
+		</xsd:sequence>
+		<xsd:attribute name="type" type="xsd:string" />
+	</xsd:complexType>
+	<xsd:complexType name="Interface">
+		<xsd:sequence>
+			<xsd:element name="Signal" type="Signal" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="Reading" type="Reading" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="Signal">
+		<xsd:sequence>
+			<xsd:element name="Operation" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="Input" />
+						<xsd:enumeration value="Output" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Type" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="Analog" />
+						<xsd:enumeration value="Digital" />
+						<xsd:enumeration value="Protocol" />
+						<xsd:enumeration value="Logical" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Measurement" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string" />
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Unit" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string" />
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Number" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="Multiple" />
+						<xsd:enumeration value="Single" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Range" type="Range" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Method_name" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Parameter" type="Parameter" minOccurs="0" maxOccurs="unbounded"
+					/>
+			<xsd:element name="Frequency" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:integer">
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Allowed_Status" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="INIT " />
+						<xsd:enumeration value="BINDED" />
+						<xsd:enumeration value="ALIGNED" />
+						<xsd:enumeration value="EXEC" />
+						<xsd:enumeration value="TERMINATE" />
+						<xsd:enumeration value="EMERGENCY" />
+						<xsd:enumeration value="ERROR" />
+						<xsd:enumeration value="ALL" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:string" />
+	</xsd:complexType>
+	<xsd:complexType name="Parameter">
+		<xsd:sequence>
+			<xsd:element name="Parameter_name" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Parameter_characterization" type="xsd:float" minOccurs="0"
+					maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:string" use="required" />
+		<xsd:attribute name="enumeration" type="xsd:boolean" use="required" />
+		<xsd:attribute name="discrete" type="xsd:boolean" use="required" />
+	</xsd:complexType>
+	<xsd:complexType name="Reading">
+		<xsd:sequence>
+			<xsd:element name="Type" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="Basic" />
+						<xsd:enumeration value="Derived" />
+						<xsd:enumeration value="Physical" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Measurement" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string" />
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Unit" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string" />
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Computation" type="Computation" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="Range" type="Range" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:string" />
+	</xsd:complexType>
+	<xsd:complexType name="Computation">
+		<xsd:sequence>
+			<xsd:element name="Type" minOccurs="1" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="Aggregate" />
+						<xsd:enumeration value="Formula" />
+						<xsd:enumeration value="Map" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="Expression" minOccurs="0" maxOccurs="1">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string" />
+				</xsd:simpleType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

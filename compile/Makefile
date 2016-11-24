@@ -41,6 +41,7 @@ REBUILDFLAGS	=	-s $(TOPDIR)/system  debug.c 	\
 			-s $(TOPDIR)/device/spi			\
 			-s $(TOPDIR)/device/act			\
 			-s $(TOPDIR)/device/adc			\
+			-s $(TOPDIR)/device/ext			\
 			-s $(TOPDIR)/net  'arp_dump*'  		\
 				'dhcp_dump*'  pxe.c		\
 			-s $(TOPDIR)/shell  'xsh_rdstest*'
@@ -92,6 +93,10 @@ CONFPGM		= $(TOPDIR)/config/config
 CONFL		= $(TOPDIR)/config/config.l
 CONFY		= $(TOPDIR)/config/config.y
 
+# DDL Parser
+
+DDLPARSER	= $(TOPDIR)/ddl/ddl_parser.c
+
 # Set up the required build directory structure
 
 BLDDIRS	= binaries
@@ -101,13 +106,18 @@ export
 # Specific additional rules and exceptions
 #--------------------------------------------------------------------------------
 
-xinu:	Makefile rebuild $(BLDDIRS) $(DEFSFILE) $(DEPSFILE) $(CONFH) $(CONFC) $(LD_LIST)
+xinu:	Makefile device_ext rebuild $(BLDDIRS) $(DEFSFILE) $(DEPSFILE) $(CONFH) $(CONFC) $(LD_LIST)
 	@echo;echo 'Loading object files to produce xinu'
 	@$(LD) $(LDFLAGS) $(LD_LIST) -o $(XINU) -L../cross_compiler/lib/gcc/arm-none-eabi/4.8.1/ -lgcc
 	@$(OBJCOPY) -O binary $(XINU) $(XINUBIN)
 	@./uboot-tool/mkimage -A arm -O linux -T kernel -C none -a 0x81000000 -e 0x81000000 -d $(XINUBIN) $(XINUBOOT)
 
-$(BLDDIRS): 
+# Added by Yuan
+device_ext: $(DDLPARSER)
+	@echo making the DDL parser and generating device drivers for sensors/actuators
+	@(cd $(TOPDIR)/ddl; make; ./ddl_parser tmp36 led)
+
+$(BLDDIRS):
 	@mkdir -p $(BLDDIRS)
 
 objects: $(LD_LIST)
@@ -143,7 +153,7 @@ clean:
 #--------------------------------------------------------------------------------
 # Locations of source directories and exceptions (.c and .[sS] files to exclude)
 #--------------------------------------------------------------------------------
-	
+
 $(DEFSFILE):
 	@rm -f $(DEFSFILE)
 	@echo "" > $(DEFSFILE)

@@ -33,6 +33,10 @@ extern	void adchandler(uint32 xnum);
 extern devcall	adcinit (struct	dentry *devptr);
 extern devcall	adcread(struct dentry* devptr,char* buff, int32 count);
 
+/* in folder device/ext*/
+extern	devcall tmp36read(struct dentry *devptr, char *buffer, int32 count);
+extern	devcall ledwrite(struct dentry *devptr, char *buffer, int32 count);
+
 /* in file notification.c */
 extern void note_insert(topic16, void *, uint32);
 extern void note_delete();

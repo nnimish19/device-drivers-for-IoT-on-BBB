@@ -117,6 +117,19 @@ adc:
 		-w ionull	-s ionull	-n ionull
 		-intr adchandler
 
+/* type of sensor/actuator device */
+tmp36:
+	on top
+		-i ionull		-o ionull	-c ionull
+		-r tmp36read	-g ionull	-p ionull
+		-w ionull		-s ionull	-n ionull
+		-intr ionull
+led:
+	on top
+		-i ionull		-o ionull	-c ionull
+		-r ionull	    -g ionull	-p ionull
+		-w ledwrite		-s ionull	-n ionull
+		-intr ioerr
 %%
 
 /* Actual device declarations that each give the name of a device that	*/
@@ -177,6 +190,9 @@ adc:
    LED0 is act on gpio_v2 csr 0x4804C000
    ADC  is adc on top csr 0x44e0d000 -irq 16
 
+   /* sensor/actuator devices */
+   TMP36 is tmp36 on top
+   LED is led on top csr 0x4804C000
 %%
 
 /* Configuration and Size Constants */
