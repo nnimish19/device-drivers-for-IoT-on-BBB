@@ -24,10 +24,8 @@ extern unsigned int GPIOPinRead(unsigned int baseAdd, unsigned int pinNumber);
 extern void GPIO1Pin23PinMuxSetup(void);
 void GPIO1ModuleClkConfig(void);
 
-/* in file actinit.c */
+/* in folder device/act*/
 extern	devcall	actinit(struct dentry *);
-
-/* in file actwrite.c */
 extern	devcall	actwrite(struct dentry *, char *, int32);
 
 /* in folder device/adc */

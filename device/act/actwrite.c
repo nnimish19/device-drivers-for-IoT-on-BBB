@@ -18,10 +18,8 @@
 
 #define GPIO_INSTANCE_PIN_NUMBER        (12)
 
-devcall	actwrite(struct dentry* devptr,char* buff, int32 count)
-{
-    if(count!=1)
-    {
+devcall	actwrite(struct dentry* devptr,char* buff, int32 count) {
+    if(count!=1) {
         return 0;
     }
 
@@ -36,15 +34,13 @@ devcall	actwrite(struct dentry* devptr,char* buff, int32 count)
                    GPIO_DIR_OUTPUT);
 
 
-    if(buff[0]=='1')
-    {
+    if(buff[0]=='1') {
         GPIOPinWrite(baseaddress,
                      GPIO_INSTANCE_PIN_NUMBER,
                      GPIO_PIN_HIGH);
         return 1;
     }
-    else if(buff[0]=='0')
-    {
+    else if(buff[0]=='0') {
         GPIOPinWrite(baseaddress,
                      GPIO_INSTANCE_PIN_NUMBER,
                      GPIO_PIN_LOW);
