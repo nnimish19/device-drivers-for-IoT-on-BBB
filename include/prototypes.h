@@ -15,6 +15,10 @@ extern	void	arp_hton(struct arppacket *);
 /* in file ascdate.c */
 extern	status	ascdate(uint32, char *);
 
+/*in b2e.c*/
+extern syscall sendEdge(char* dip,uint16 dport,char* msg,uint16 len);
+extern syscall recvEdge(char* msg,uint16 len);
+
 /* gpio_v2.c*/
 extern void GPIOModuleReset(unsigned int baseAdd);
 extern void GPIOModuleEnable(unsigned int baseAdd);
