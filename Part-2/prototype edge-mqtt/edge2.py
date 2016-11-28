@@ -2,7 +2,7 @@ import socket
 import time
 import paho.mqtt.client as mqtt
 
-address = ('192.168.1.104', 8000)             #ip,port it keeps listening at
+address = ('192.168.1.101', 8000)             #ip,port it keeps listening at
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.bind(address)
 
@@ -14,7 +14,7 @@ while True:
     #mqttc.publish("LED", data)
     mqttc.publish("Button", '1')
     time.sleep(5)
-    mqttc.publish("Button", '0')
+    mqttc.publish("Button", '2')
     time.sleep(5)
 
 mqttc.loop_forever()

@@ -2,11 +2,11 @@ import socket
 import paho.mqtt.client as mqtt
 
 #Edge: reserve port for BBB communication----------------------------------
-address = ('192.168.1.104', 8001)       #Edge ip,port through which it will send
+address = ('192.168.1.101', 8001)       #Edge ip,port through which it will send
 b = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 b.bind(address)
 
-dst = ('192.168.1.101', 8001)           #destination(XINU) ip,port
+dst = ('192.168.1.102', 8001)           #destination(XINU) ip,port
 
 #Egde: subscribe to MQTT broker---------------------------------------------
 # The callback for when the client receives a CONNACK response from the server.
