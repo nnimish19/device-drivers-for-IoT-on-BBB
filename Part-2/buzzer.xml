@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DDL version="1.00">
+	<Sensor>
+		<!-- General information of the device -->
+		<Description>
+			<!-- Name of the device -->
+			<Name>Buzzer</Name>
+			<!-- Type of Device (Physical(Singleton) or Virtual) -->
+			<Device_Type>Physical</Device_Type>
+			<!-- Description of the device -->
+			<Verbose_Description>
+				Buzzer
+			</Verbose_Description>
+			<!-- Device vendor -->
+			<Vendor>University of Florida </Vendor>
+			<!-- Device version -->
+			<Version>1.0 </Version>
+			<Physical>
+				<!-- Dimensions of the device -->
+				<Dimensions>
+					<!-- Length in mm, left blank if unknown -->
+					<Length>5</Length>
+					<!-- Width in mm, left blank if unknown -->
+					<Width>5</Width>
+					<!-- Height in mm, left blank if unknown -->
+					<Height>5</Height>
+				</Dimensions>
+				<!-- Permissible environment for operation -->
+				<Operating_environment>
+					<!-- Average current and voltage in mA, V -->
+					<Forward_current>20</Forward_current>
+					<Forward_voltage>3.5</Forward_voltage>
+				</Operating_environment>
+			</Physical>
+		</Description>
+		<Interation>
+			<Topic>Buzzer</Topic>
+			<Dashboard show='1'>
+				<Format>binary(beep/silent)</Format>
+				<Unit></Unit>
+			</Dashboard>
+			<BBB_Address>192.168.1.101</BBB_Address>
+			<Edge_Address>192.168.1.104</Edge_Address>
+			<Server_Address>128.227.170.197</Server_Address>
+			<Dependence_Topic>Button</Dependence_Topic>
+		</Interation>
+		<!--Interfaces of a device-->
+		<Interface>
+			<!-- To avoid confusion, ensure Signal id is always alpha-numeric instead of numeric -->
+			<Signal id="s4">
+				<!-- Value of Operation attribute can be Input or Output -->
+				<Operation>Output</Operation>
+				<!-- A Signal Type can be: Analog or Digital or Protocol or Logical
+Analog/Digital is a low level collection of pins
+Protocol is a high level interface to a device which has an
+in-built communication protocol (example: AnD Blood Pressure Monitor)
+Logical is high-level device service.
+-->
+				<Type>Digital</Type>
+				<!-- Value of Measurement attribute can be: ADC, Digital or a string whose value
+is equal to the Reading->Measurement attribute of another physical/virtual sensor
+-->
+				<Measurement>Digital</Measurement>
+				<Pin>14</Pin>
+				<Unit>null</Unit>
+				<!-- Number can be Single or Multiple (many signal inputs of same type) -->
+				<Number>Single</Number>
+				<Range>
+					<!-- leave blank if you don‟t know -->
+					<Min></Min>
+					<!-- leave blank if you don‟t know -->
+					<Max></Max>
+				</Range>
+			</Signal>
+			<Reading>
+				<!-- Type can be: Basic(Virtual Sensor), Derived(Virtual Sensor),
+Physical (Singleton Sensor)
+-->
+				<Type></Type>
+				<Measurement></Measurement>
+				<Unit></Unit>
+				<Computation>
+					<!-- Possible value of the Type attribute can be: Aggregate, Formula or Map -->
+					<Type></Type>
+					<!-- Possible valid Expression attribute values can be:
+For Type=‟Aggregate‟: Mean, Median, Mode, Max, Min, Sum
+For Type=‟Formula‟: <numerical expression as function of signal ids>
+For Type=‟Map‟: <map of signal ids to range of output values>
+-->
+					<!-- The formula function conforms to Java syntax -->
+					<Expression></Expression>
+					<!--Range can be calculated automatically -->
+					<Range>
+						<Min></Min>
+						<Max></Max>
+					</Range>
+				</Computation>
+			</Reading>
+		</Interface>
+	</Sensor>
+</DDL>
