@@ -20,8 +20,8 @@ syscall recvEdge(char* msg,uint16 len)
     mask = disable();
     uid32 slot=udp_register(0,0,8001);
     //kprintf("slot: %d\n", slot);
-    int i= udp_recv(slot,msg,len,10000);
+    int i= udp_recv(slot,msg,len,1000000);
     udp_release(slot);
     restore(mask);
-    return 0;
+    return i;
 }
