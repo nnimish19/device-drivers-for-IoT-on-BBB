@@ -10,6 +10,8 @@
 process main(void){
     recvclr();
 
+    //netstart();
+
     char recv[10];
     char on[]={'1'},off[] = {'0'};
     int status, count=1,t0=0,t1=0;
@@ -17,7 +19,7 @@ process main(void){
     kprintf("\n~~~~~ Start: Main function ~~~~~~\n");
 
     //send initial LED/BUZZER status
-    sendEdge("192.168.1.104",8001,"1,off",5);
+    sendEdge("192.168.1.104",8001,"0,off",5);
     sendEdge("192.168.1.104",8001,"1,off",5);
 
     while(TRUE)
