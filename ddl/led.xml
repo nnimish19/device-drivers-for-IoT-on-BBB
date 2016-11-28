@@ -33,6 +33,17 @@
 				</Operating_environment>
 			</Physical>
 		</Description>
+		<Interation>
+			<Topic>LED</Topic>
+			<Dashboard show='1'>
+				<Format>binary(on/off)</Format>
+				<Unit></Unit>
+			</Dashboard>
+			<BBB_Address>192.168.1.101</BBB_Address>
+			<Edge_Address>192.168.1.104</Edge_Address>
+			<Server_Address>128.227.170.197</Server_Address>
+			<Dependence_Topic>Button</Dependence_Topic>
+		</Interation>
 		<!--Interfaces of a device-->
 		<Interface>
 			<!-- To avoid confusion, ensure Signal id is always alpha-numeric instead of numeric -->
