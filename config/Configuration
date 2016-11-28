@@ -130,6 +130,12 @@ led:
 		-r ionull	    -g ionull	-p ionull
 		-w ledwrite		-s ionull	-n ionull
 		-intr ioerr
+buzzer:
+	on top
+		-i ionull		-o ionull	-c ionull
+		-r ionull	    -g ionull	-p ionull
+		-w buzzerwrite  -s ionull	-n ionull
+		-intr ioerr
 %%
 
 /* Actual device declarations that each give the name of a device that	*/
@@ -193,6 +199,7 @@ led:
    /* sensor/actuator devices */
    TMP36 is tmp36 on top
    LED is led on top csr 0x4804C000
+   BUZZER is buzzer on top csr 0x4804C000
 %%
 
 /* Configuration and Size Constants */

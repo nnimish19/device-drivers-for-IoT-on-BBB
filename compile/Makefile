@@ -115,7 +115,7 @@ xinu:	Makefile device_ext rebuild $(BLDDIRS) $(DEFSFILE) $(DEPSFILE) $(CONFH) $(
 # Added by Yuan
 device_ext: $(DDLPARSER)
 	@echo making the DDL parser and generating device drivers for sensors/actuators
-	@(cd $(TOPDIR)/ddl; make; ./ddl_parser tmp36 led)
+	@(cd $(TOPDIR)/ddl; make; ./ddl_parser tmp36 led buzzer)
 
 $(BLDDIRS):
 	@mkdir -p $(BLDDIRS)
