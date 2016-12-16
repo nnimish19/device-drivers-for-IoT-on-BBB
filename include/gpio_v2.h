@@ -42,6 +42,8 @@
 #define SOC_CM_PER_REGS                      (SOC_PRCM_REGS + 0)
 
 //hw/hw_cm_per.h:
+//In the data sheet just contol+F the Base register and you can find its description.
+//This type of declaration gives you advanatage that anytime you can check a given register in datasheet by its name and not by adddress; and names are easy to rem
 #define CM_PER_GPIO1_CLKCTRL   (0xac)
 #define CM_PER_GPIO1_CLKCTRL_MODULEMODE   (0x00000003u)
 #define CM_PER_GPIO1_CLKCTRL_MODULEMODE_ENABLE   (0x2u)
