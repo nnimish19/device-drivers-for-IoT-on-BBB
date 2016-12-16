@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>An example</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>
+            function call_counter(url) {
+                window.open(url);
+            }
+            function opencurr(url) {
+                window.open(url,"_self");
+            }
+            function funcTest(){
+                window.setInterval("opencurr('http://128.227.170.197:8000/showDashboard')",3000);
+            }
+            window.onload = funcTest;
+        </script>
+    <style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2}
+
+    th {
+        background-color: #4CAF50;
+    color: white;
+}
+</style>
+    </head>
+<body>
+    <table border="1" align="center">
+        <tr>
+            <th>name</th>
+            <th>data</th>
+            <th>operation</th>
+        </tr>
+        {% for k, v in sensors.items %}
+        <tr>
+            <td>{{ k }}</td>
+            <td>{{ v }}</td>
+            {% if k == 'LED' %}
+                <td>
+                <button onclick="call_counter('http://128.227.170.197:8000/publishButton1');">
+                on/off
+                </button>
+                </td>
+            {% endif %}
+            {% if k == 'Buzzer' %}
+                <td>
+                <button onclick="call_counter('http://128.227.170.197:8000/publishButton2');">
+                on/off
+                </button>
+                </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+</table>
+</body>
+</html>
