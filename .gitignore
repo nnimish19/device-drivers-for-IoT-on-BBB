@@ -1,2 +1,4 @@
 *.DS_Store
 *.defs
+
+.idea/workspace.xml
